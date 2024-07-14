@@ -1,10 +1,12 @@
 package com.kurtomerfaruk.martfury.models;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Basic;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.*;
 
 import java.io.Serial;
-import java.sql.Timestamp;
 
 /**
  * @author Omer Faruk KURT kurtomerfaruk@gmail.com
@@ -12,6 +14,7 @@ import java.sql.Timestamp;
  * @since 14.07.2024 10:51
  */
 @Entity
+@Table(name = "countries", schema = "martfury", catalog = "")
 @Builder
 @Getter
 @Setter
