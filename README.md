@@ -1,4 +1,4 @@
-# Sping Boot Tutorial
+# Spring Boot Tutorial
 
 [Martfury E-Commerce](https://pages.github.com/) with Spring Boot is an example prepared using the database.
 
