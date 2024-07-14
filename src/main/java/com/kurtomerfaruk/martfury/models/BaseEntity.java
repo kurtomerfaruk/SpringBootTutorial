@@ -1,14 +1,13 @@
 package com.kurtomerfaruk.martfury.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import java.io.Serial;
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
@@ -29,10 +28,12 @@ public abstract class BaseEntity<ID extends Serializable> implements Serializabl
     private ID id;
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
+    @JsonIgnore
     private LocalDateTime createdAt;
 
     @UpdateTimestamp
     @Column(name = "updated_at")
+    @JsonIgnore
     private LocalDateTime updatedAt;
 
     @PrePersist
