@@ -26,7 +26,7 @@ public class FaqsController {
     @GetMapping
     public ResponseEntity<CustomPage<Faqs>> getAll(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size){
         Page<Faqs> results = faqsService.findAll(page,size);
-        CustomPage<Faqs> customPage = new CustomPage<Faqs>(results);
+        CustomPage<Faqs> customPage = new CustomPage<>(results);
         return ResponseEntity.ok(customPage);
     }
 }
