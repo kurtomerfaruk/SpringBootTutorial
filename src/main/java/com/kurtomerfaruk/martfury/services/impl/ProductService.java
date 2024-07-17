@@ -4,6 +4,7 @@ import com.kurtomerfaruk.martfury.models.Product;
 import com.kurtomerfaruk.martfury.repositories.ProductRepository;
 import com.kurtomerfaruk.martfury.services.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -22,6 +23,7 @@ public class ProductService implements IProductService {
     @Autowired
     private ProductRepository productRepository;
 
+    @Cacheable(value = "products")
     @Override
     public Page<Product> findAll(int page, int size) {
         Pageable pageable = PageRequest.of(page, size);

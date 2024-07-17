@@ -6,3 +6,20 @@ spring:
     password: root
     url: jdbc:mysql://localhost:3306/martfury
     driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    properties:
+      hibernate:
+        cache:
+          use_second_level_cache: true
+          region:
+            factory_class: jcache
+        javax:
+          cache:
+            provider: org.ehcache.jsr107.EhcacheCachingProvider
+      javax:
+        cache:
+          provider: org.ehcache.jsr107.EhcacheCachingProvider
+          uri: classpath:ehcache.xml
+    show-sql: true
+  main:
+    allow-bean-definition-overriding: true

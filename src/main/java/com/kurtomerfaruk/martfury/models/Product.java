@@ -1,14 +1,13 @@
 package com.kurtomerfaruk.martfury.models;
 
-import jakarta.persistence.Basic;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import java.sql.Timestamp;
 
@@ -24,6 +23,8 @@ import java.sql.Timestamp;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Cacheable
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Product extends BaseEntity<Long> {
     @Basic
     @Column(name = "name")
@@ -123,7 +124,7 @@ public class Product extends BaseEntity<Long> {
     private byte generateLicenseCode;
     @Basic
     @Column(name = "store_id")
-    private int storeId;
+    private Integer storeId;
     @Basic
     @Column(name = "approved_by")
     private Object approvedBy;
