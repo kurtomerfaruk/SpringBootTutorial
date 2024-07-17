@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -36,5 +37,14 @@ public class ProductController {
             return productOptional.get();
         }
         throw new ResourceNotFoundException(String.format("Product with ID %s not found", id));
+    }
+
+    @GetMapping("/sku/{sku}")
+    public List<Product> getProductBySku(@PathVariable String sku){
+        List<Product> products = productService.getProductBySku(sku);
+        if(products.isEmpty()){
+            throw  new ResourceNotFoundException(String.format("Product with SKU %s not found",sku));
+        }
+       return products;
     }
 }

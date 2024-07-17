@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.QueryHints;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -17,4 +18,6 @@ import java.util.Optional;
 public interface ProductRepository extends PagingAndSortingRepository<Product,Long> {
     @QueryHints({@QueryHint(name = "org.hibernate.cacheable",value = "true")})
     Optional<Product> findById(Long id);
+
+    List<Product> findBySku(String sku);
 }

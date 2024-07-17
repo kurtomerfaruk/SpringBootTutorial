@@ -3,6 +3,7 @@ package com.kurtomerfaruk.martfury.services;
 import com.kurtomerfaruk.martfury.models.Product;
 import org.springframework.data.domain.Page;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -12,6 +13,6 @@ import java.util.Optional;
  */
 public interface IProductService {
     Page<Product> findAll(int page, int size);
-
     Optional<Product> getProductById(Long id);
+    List<Product> getProductBySku(String sku);
 }
