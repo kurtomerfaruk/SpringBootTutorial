@@ -17,7 +17,7 @@ import java.util.List;
  */
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/countries")
+@RequestMapping("/api/v1/countries")
 public class CountriesController {
     private final ICountriesService countriesService;
 

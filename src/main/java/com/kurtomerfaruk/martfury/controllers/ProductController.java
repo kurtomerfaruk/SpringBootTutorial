@@ -19,7 +19,7 @@ import java.util.Optional;
  * @since 16.07.2024 19:54
  */
 @RestController
-@RequestMapping("/api/products")
+@RequestMapping("/api/v1/products")
 public class ProductController {
     @Autowired
     private IProductService productService;

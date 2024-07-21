@@ -6,9 +6,13 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serial;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * @author Omer Faruk KURT kurtomerfaruk@gmail.com
@@ -22,7 +26,7 @@ import java.sql.Timestamp;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Users extends BaseEntity<Long>{
+public class Users extends BaseEntity<Long> implements UserDetails {
     @Serial
     private static final long serialVersionUID = -896129590636267892L;
     @Basic
@@ -66,4 +70,34 @@ public class Users extends BaseEntity<Long>{
     private Timestamp lastLogin;
 
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return new ArrayList<>();
+    }
+
+    @Override
+    public String getUsername() {
+        // email in our case
+        return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }

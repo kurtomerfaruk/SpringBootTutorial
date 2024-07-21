@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/faqcategories")
+@RequestMapping("/api/v1/faqcategories")
 public class FaqCategoriesController {
     private final IFaqCategoriesService faqCategoriesService;
 
