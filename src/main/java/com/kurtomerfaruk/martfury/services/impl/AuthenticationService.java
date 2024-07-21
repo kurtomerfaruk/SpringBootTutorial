@@ -30,7 +30,11 @@ public class AuthenticationService implements IAuthenticationService {
                 .email(request.getEmail()).password(passwordEncoder.encode(request.getPassword())).build();
         userRepository.save(user);
         var jwt = jwtService.generateToken(user);
-        return JwtAuthenticationResponse.builder().token(jwt).build();
+        var expirationTime = jwtService.getExpirationTime();
+        return JwtAuthenticationResponse.builder()
+                .token(jwt)
+                .expiresIn(expirationTime)
+                .build();
     }
 
     @Override
@@ -40,6 +44,10 @@ public class AuthenticationService implements IAuthenticationService {
         var user = userRepository.findByEmail(request.getEmail())
                 .orElseThrow(() -> new IllegalArgumentException("Invalid email or password."));
         var jwt = jwtService.generateToken(user);
-        return JwtAuthenticationResponse.builder().token(jwt).build();
+        var expirationTime = jwtService.getExpirationTime();
+        return JwtAuthenticationResponse.builder()
+                .token(jwt)
+                .expiresIn(expirationTime)
+                .build();
     }
 }

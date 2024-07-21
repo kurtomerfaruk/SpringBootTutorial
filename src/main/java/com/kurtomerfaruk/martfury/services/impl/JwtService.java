@@ -24,8 +24,17 @@ import java.util.function.Function;
  */
 @Service
 public class JwtService implements IJwtService {
-    @Value("${token.signing.key}")
+    @Value("${security.jwt.key}")
     private String jwtSigningKey;
+
+    @Value("${security.jwt.expiration-time}")
+    private long expirationTime;
+
+
+    public long getExpirationTime() {
+        return expirationTime;
+    }
+
     @Override
     public String extractUserName(String token) {
         return extractClaim(token, Claims::getSubject);
@@ -48,10 +57,13 @@ public class JwtService implements IJwtService {
     }
 
     private String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
-        return Jwts.builder().setClaims(extraClaims).setSubject(userDetails.getUsername())
+        return Jwts.builder()
+                .setClaims(extraClaims)
+                .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24))
-                .signWith(getSigningKey(), SignatureAlgorithm.HS256).compact();
+                .setExpiration(new Date(System.currentTimeMillis() + expirationTime))
+                .signWith(getSigningKey(), SignatureAlgorithm.HS256)
+                .compact();
     }
 
     private boolean isTokenExpired(String token) {
