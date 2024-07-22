@@ -25,12 +25,14 @@ public class FaqCategories extends BaseEntity<Long>{
     @Serial
     private static final long serialVersionUID = -262910363637507753L;
     @Basic
+    @NotBlank(message = "Must be not blank")
     @Column(name = "name")
     private String name;
     @Basic
     @Column(name = "`order`")
     private byte order;
     @Basic
+    @NotBlank(message = "Must be not blank")
     @Column(name = "status")
     private String status;
     @Basic

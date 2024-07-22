@@ -28,8 +28,8 @@ public class FaqCategoriesController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<String> save(@Valid @RequestBody FaqCategories faqCategories)  {
+    public ResponseEntity<FaqCategories> save(@Valid @RequestBody FaqCategories faqCategories)  {
        faqCategoriesService.save(faqCategories);
-       return ResponseEntity.ok("Faq Categories saved");
+       return ResponseEntity.ok(faqCategories);
     }
 }
