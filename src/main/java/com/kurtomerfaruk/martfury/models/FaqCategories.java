@@ -4,6 +4,7 @@ import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 import java.io.Serial;
@@ -27,12 +28,13 @@ public class FaqCategories extends BaseEntity<Long>{
     @Column(name = "name")
     private String name;
     @Basic
-    @Column(name = "order")
+    @Column(name = "`order`")
     private byte order;
     @Basic
     @Column(name = "status")
     private String status;
     @Basic
+    @NotBlank(message = "Must be not blank")
     @Column(name = "description")
     private String description;
 

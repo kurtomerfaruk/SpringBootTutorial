@@ -9,5 +9,7 @@ import org.springframework.data.domain.Page;
  * @since 14.07.2024 13:01
  */
 public interface IFaqCategoriesService {
+
+    FaqCategories save(FaqCategories faqCategories);
     Page<FaqCategories> findAll(int page, int size);
 }

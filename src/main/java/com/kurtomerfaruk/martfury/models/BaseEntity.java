@@ -7,6 +7,7 @@ import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -23,9 +24,12 @@ import java.time.LocalDateTime;
 @Setter
 @ToString
 public abstract class BaseEntity<ID extends Serializable> implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 2369192495246096280L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private ID id;
+    
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
     @JsonIgnore

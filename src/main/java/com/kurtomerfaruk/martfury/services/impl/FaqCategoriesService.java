@@ -19,6 +19,12 @@ import org.springframework.stereotype.Service;
 public class FaqCategoriesService implements IFaqCategoriesService {
 
     private final FaqCategoriesRepository faqCategoriesRepository;
+
+    @Override
+    public FaqCategories save(FaqCategories faqCategories) {
+        return faqCategoriesRepository.save(faqCategories);
+    }
+
     @Override
     public Page<FaqCategories> findAll(int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
