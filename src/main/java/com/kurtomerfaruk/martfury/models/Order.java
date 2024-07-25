@@ -3,6 +3,7 @@ package com.kurtomerfaruk.martfury.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import java.io.Serial;
 import java.math.BigDecimal;
@@ -20,7 +21,9 @@ import java.sql.Timestamp;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class EcOrders extends BaseEntity<Long>{
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+public class Order extends BaseEntity<Long>{
     @Serial
     private static final long serialVersionUID = 6960263387032617607L;
     @Basic
@@ -78,9 +81,9 @@ public class EcOrders extends BaseEntity<Long>{
     private Object storeId;
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     @ManyToOne(fetch = FetchType.EAGER)
-    private Users user;
+    private User user;
     @JoinColumn(name = "payment_id",referencedColumnName = "id")
     @ManyToOne(fetch = FetchType.EAGER)
-    private Payments payment;
+    private Payment payment;
 
 }

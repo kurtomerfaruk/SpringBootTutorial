@@ -3,6 +3,7 @@ package com.kurtomerfaruk.martfury.services.impl;
 import com.kurtomerfaruk.martfury.repositories.UserRepository;
 import com.kurtomerfaruk.martfury.services.IUserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -17,6 +18,8 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserService implements IUserService {
     private final UserRepository userRepository;
+
+    @Cacheable(value = "userDetailsService")
     @Override
     public UserDetailsService userDetailsService() {
         return new UserDetailsService() {

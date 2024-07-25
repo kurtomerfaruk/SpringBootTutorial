@@ -1,9 +1,10 @@
 package com.kurtomerfaruk.martfury.services.impl;
 
-import com.kurtomerfaruk.martfury.models.EcOrders;
-import com.kurtomerfaruk.martfury.repositories.EcOrdersRepository;
-import com.kurtomerfaruk.martfury.services.IEcOrdersService;
+import com.kurtomerfaruk.martfury.models.Order;
+import com.kurtomerfaruk.martfury.repositories.OrderRepository;
+import com.kurtomerfaruk.martfury.services.IOrderService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -16,12 +17,13 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @RequiredArgsConstructor
-public class EcOrdersService implements IEcOrdersService {
+public class OrderService implements IOrderService {
 
-    private final EcOrdersRepository ordersRepository;
+    private final OrderRepository ordersRepository;
 
+    @Cacheable(value = "orders")
     @Override
-    public Page<EcOrders> findAll(int page, int size) {
+    public Page<Order> findAll(int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
         return ordersRepository.findAll(pageable);
     }

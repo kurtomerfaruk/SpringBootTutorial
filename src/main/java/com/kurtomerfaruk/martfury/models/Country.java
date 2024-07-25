@@ -20,7 +20,7 @@ import java.io.Serial;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Countries extends BaseEntity<Long>{
+public class Country extends BaseEntity<Long>{
     @Serial
     private static final long serialVersionUID = 634564484327764768L;
     @Basic

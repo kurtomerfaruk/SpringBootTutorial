@@ -1,7 +1,9 @@
 package com.kurtomerfaruk.martfury.repositories;
 
-import com.kurtomerfaruk.martfury.models.Users;
+import com.kurtomerfaruk.martfury.models.User;
+import jakarta.persistence.QueryHint;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.QueryHints;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -12,7 +14,8 @@ import java.util.Optional;
  * @since 21.07.2024 12:37
  */
 @Repository
-public interface UserRepository extends JpaRepository<Users, Integer> {
-    // Since email is unique, we'll find users by email
-    Optional<Users> findByEmail(String email);
+public interface UserRepository extends JpaRepository<User, Integer> {
+
+    @QueryHints({@QueryHint(name = "org.hibernate.cacheable",value = "true")})
+    Optional<User> findByEmail(String email);
 }

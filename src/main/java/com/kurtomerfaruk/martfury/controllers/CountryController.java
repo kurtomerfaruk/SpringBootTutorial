@@ -1,7 +1,7 @@
 package com.kurtomerfaruk.martfury.controllers;
 
-import com.kurtomerfaruk.martfury.models.Countries;
-import com.kurtomerfaruk.martfury.services.ICountriesService;
+import com.kurtomerfaruk.martfury.models.Country;
+import com.kurtomerfaruk.martfury.services.ICountryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,12 +18,12 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/countries")
-public class CountriesController {
-    private final ICountriesService countriesService;
+public class CountryController {
+    private final ICountryService countriesService;
 
     @GetMapping
-    public ResponseEntity<List<Countries>> getAll(){
-       List<Countries> result= countriesService.findAll();
+    public ResponseEntity<List<Country>> getAll(){
+       List<Country> result= countriesService.findAll();
        return ResponseEntity.ok(result);
     }
 }

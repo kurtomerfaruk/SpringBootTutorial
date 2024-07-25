@@ -12,10 +12,10 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @EnableCaching
-public class CacheConfig6 {
+public class ApplicationCacheConfig {
 
     @Bean
     public ConcurrentMapCacheManager cacheManager() {
-        return new ConcurrentMapCacheManager("products"); // Önbelleğe alınacak entity ismi
+        return new ConcurrentMapCacheManager();
     }
 }

@@ -1,8 +1,8 @@
 package com.kurtomerfaruk.martfury.controllers;
 
 import com.kurtomerfaruk.martfury.customs.CustomPage;
-import com.kurtomerfaruk.martfury.models.Faqs;
-import com.kurtomerfaruk.martfury.services.IFaqsService;
+import com.kurtomerfaruk.martfury.models.Faq;
+import com.kurtomerfaruk.martfury.services.IFaqService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -19,14 +19,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/faqs")
-public class FaqsController {
+public class FaqController {
 
-    private final IFaqsService faqsService;
+    private final IFaqService faqsService;
 
     @GetMapping
-    public ResponseEntity<CustomPage<Faqs>> getAll(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size){
-        Page<Faqs> results = faqsService.findAll(page,size);
-        CustomPage<Faqs> customPage = new CustomPage<>(results);
+    public ResponseEntity<CustomPage<Faq>> getAll(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size){
+        Page<Faq> results = faqsService.findAll(page,size);
+        CustomPage<Faq> customPage = new CustomPage<>(results);
         return ResponseEntity.ok(customPage);
     }
 }

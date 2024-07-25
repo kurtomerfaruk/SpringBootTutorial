@@ -21,7 +21,7 @@ import java.io.Serial;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class FaqCategories extends BaseEntity<Long>{
+public class FaqCategory extends BaseEntity<Long>{
     @Serial
     private static final long serialVersionUID = -262910363637507753L;
     @Basic

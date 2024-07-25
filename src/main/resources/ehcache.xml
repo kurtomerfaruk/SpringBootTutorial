@@ -1,11 +1,16 @@
-<config xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
-        xmlns='http://www.ehcache.org/v3' xsi:schemaLocation="http://www.ehcache.org/v3 http://www.ehcache.org/schema/ehcache-core.xsd">
-    <cache alias="products">
-        <key-type>java.lang.Long</key-type>
-        <value-type>com.kurtomerfaruk.martfury.models.Product</value-type>
-        <expiry>
-            <ttl unit="seconds">60</ttl> <!-- Örnek: 60 saniye önbellek süresi -->
-        </expiry>
-        <heap unit="entries">100</heap>
-    </cache>
-</config>
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://www.ehcache.org/ehcache.xsd"
+         updateCheck="true" monitoring="autodetect" dynamicConfig="true">
+    <defaultCache
+            maxEntriesLocalHeap="10000"
+            eternal="false"
+            timeToIdleSeconds="3600"
+            timeToLiveSeconds="7200"
+            overflowToDisk="false"
+            diskPersistent="false"
+            diskExpiryThreadIntervalSeconds="120"
+            memoryStoreEvictionPolicy="LRU" />
+
+    <!-- Define specific cache regions for entities here -->
+</ehcache>

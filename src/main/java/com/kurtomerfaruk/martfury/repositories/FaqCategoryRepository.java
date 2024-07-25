@@ -1,6 +1,6 @@
 package com.kurtomerfaruk.martfury.repositories;
 
-import com.kurtomerfaruk.martfury.models.FaqCategories;
+import com.kurtomerfaruk.martfury.models.FaqCategory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,5 +10,5 @@ import org.springframework.stereotype.Repository;
  * @since 14.07.2024 13:00
  */
 @Repository
-public interface FaqCategoriesRepository extends JpaRepository<FaqCategories,Long> {
+public interface FaqCategoryRepository extends JpaRepository<FaqCategory,Long> {
 }

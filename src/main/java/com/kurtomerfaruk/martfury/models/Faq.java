@@ -17,7 +17,7 @@ import java.io.Serial;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Faqs extends BaseEntity<Long>{
+public class Faq extends BaseEntity<Long>{
     @Serial
     private static final long serialVersionUID = -2942174591740525825L;
     @Basic
@@ -28,7 +28,7 @@ public class Faqs extends BaseEntity<Long>{
     private String answer;
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     @ManyToOne(fetch = FetchType.EAGER)
-    private FaqCategories category;
+    private FaqCategory category;
     @Basic
     @Column(name = "status")
     private String status;

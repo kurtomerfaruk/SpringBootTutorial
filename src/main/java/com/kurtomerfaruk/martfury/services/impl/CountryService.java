@@ -1,8 +1,8 @@
 package com.kurtomerfaruk.martfury.services.impl;
 
-import com.kurtomerfaruk.martfury.models.Countries;
-import com.kurtomerfaruk.martfury.repositories.CountriesRepository;
-import com.kurtomerfaruk.martfury.services.ICountriesService;
+import com.kurtomerfaruk.martfury.models.Country;
+import com.kurtomerfaruk.martfury.repositories.CountryRepository;
+import com.kurtomerfaruk.martfury.services.ICountryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,12 +15,12 @@ import java.util.List;
  */
 @Service
 @RequiredArgsConstructor
-public class ContriesService implements ICountriesService {
-    private final CountriesRepository countriesRepository;
+public class CountryService implements ICountryService {
+    private final CountryRepository countriesRepository;
 
 
     @Override
-    public List<Countries> findAll() {
+    public List<Country> findAll() {
         return countriesRepository.findAll();
     }
 }

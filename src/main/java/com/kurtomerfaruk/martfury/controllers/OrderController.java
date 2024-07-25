@@ -1,8 +1,8 @@
 package com.kurtomerfaruk.martfury.controllers;
 
 import com.kurtomerfaruk.martfury.customs.CustomPage;
-import com.kurtomerfaruk.martfury.models.EcOrders;
-import com.kurtomerfaruk.martfury.services.IEcOrdersService;
+import com.kurtomerfaruk.martfury.models.Order;
+import com.kurtomerfaruk.martfury.services.IOrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -19,14 +19,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/orders")
-public class EcOrdersController {
+public class OrderController {
 
-    private final IEcOrdersService ordersService;
+    private final IOrderService ordersService;
 
     @GetMapping
-    public ResponseEntity<CustomPage<EcOrders>> getAll(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size){
-        Page<EcOrders> results = ordersService.findAll(page,size);
-        CustomPage<EcOrders> customPage = new CustomPage<>(results);
+    public ResponseEntity<CustomPage<Order>> getAll(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size){
+        Page<Order> results = ordersService.findAll(page,size);
+        CustomPage<Order> customPage = new CustomPage<>(results);
         return ResponseEntity.ok(customPage);
     }
 }

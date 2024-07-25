@@ -18,7 +18,7 @@ import java.math.BigDecimal;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Payments extends BaseEntity<Long>{
+public class Payment extends BaseEntity<Long>{
     @Serial
     private static final long serialVersionUID = 7123124693658951888L;
     @Basic
@@ -62,6 +62,6 @@ public class Payments extends BaseEntity<Long>{
     private String metadata;
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     @ManyToOne(fetch = FetchType.EAGER)
-    private Users user;
+    private User user;
 
 }

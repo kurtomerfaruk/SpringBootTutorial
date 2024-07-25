@@ -4,7 +4,6 @@ import com.kurtomerfaruk.martfury.customs.CustomPage;
 import com.kurtomerfaruk.martfury.exceptions.ResourceNotFoundException;
 import com.kurtomerfaruk.martfury.models.Product;
 import com.kurtomerfaruk.martfury.services.IProductService;
-import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +23,6 @@ public class ProductController {
     @Autowired
     private IProductService productService;
 
-    @Operation(summary = "Product Listing",description = "This method lists a product")
     @GetMapping
     public ResponseEntity<CustomPage<Product>> getAll(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size){
         Page<Product> results = productService.findAll(page,size);

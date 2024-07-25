@@ -1,16 +1,13 @@
 package com.kurtomerfaruk.martfury.services.impl;
 
-import com.kurtomerfaruk.martfury.models.Countries;
-import com.kurtomerfaruk.martfury.models.Faqs;
-import com.kurtomerfaruk.martfury.repositories.FaqsRepository;
-import com.kurtomerfaruk.martfury.services.IFaqsService;
+import com.kurtomerfaruk.martfury.models.Faq;
+import com.kurtomerfaruk.martfury.repositories.FaqRepository;
+import com.kurtomerfaruk.martfury.services.IFaqService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * @author Omer Faruk KURT kurtomerfaruk@gmail.com
@@ -19,12 +16,12 @@ import java.util.List;
  */
 @Service
 @RequiredArgsConstructor
-public class FaqsService implements IFaqsService {
+public class FaqService implements IFaqService {
 
-    private final FaqsRepository faqsRepository;
+    private final FaqRepository faqsRepository;
 
     @Override
-    public Page<Faqs> findAll(int page, int size) {
+    public Page<Faq> findAll(int page, int size) {
         Pageable pageable = PageRequest.of(page, size);
         return faqsRepository.findAll(pageable);
     }
